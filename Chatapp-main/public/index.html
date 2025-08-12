@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chatapp</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <nav>
+        <img class="logo" src="logo.png" alt="Chatapp Logo" />
+    </nav>
+
+    <!-- Empty container for messages -->
+    <div class="container"></div>
+
+    <!-- Message input -->
+    <div class="send">
+        <form action="#" id="send-container">
+            <input type="text" name="messageInp" id="messageInp" placeholder="Type a message..." autocomplete="off" />
+            <button class="btn" type="submit">Send</button>
+        </form>
+
+        <!-- DM button below form -->
+        <button id="dm-button" class="btn" style="margin-top: 10px;">Send Direct Message</button>
+    </div>
+</body>
+</html>

@@ -13,18 +13,23 @@ const append = (message, position) => {
     messageContainer.scrollTop = messageContainer.scrollHeight; // Auto scroll
 };
 
+// Prevent empty message send
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const message = messageInput.value;
     if (!message.trim()) return; 
     append(`You: ${message}`, 'right');
-    socket.emit('send', message);
+    socket.emit('send', message.trim());
     messageInput.value = '';
 });
 
-const name = prompt("Enter your name to join");
+// Prompt for non-empty name
+let name = "";
+while (!name || !name.trim()) {
+  name = prompt("Enter your name to join");
+  if (name) name = name.trim();
+}
 
-// Example profile data (customize as you want)
 const profile = {
   avatar: '',
   bio: 'Hello! I just joined the chat'
@@ -46,11 +51,13 @@ socket.on('left', name => {
 
 // DM send function
 function sendDirectMessage() {
-  const to = prompt("Enter the name of the user to DM:");
-  if (!to || to.trim() === '') return alert('No user specified.');
+  let to = prompt("Enter the name of the user to DM:");
+  if (!to || !to.trim()) return alert('No user specified.');
+  to = to.trim();
 
-  const message = prompt("Enter your direct message:");
-  if (!message || message.trim() === '') return alert('No message entered.');
+  let message = prompt("Enter your direct message:");
+  if (!message || !message.trim()) return alert('No message entered.');
+  message = message.trim();
 
   append(`You (DM to ${to}): ${message}`, 'right');
 

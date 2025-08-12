@@ -1,0 +1,122 @@
+/* Logo */
+.logo {
+  display: block;
+  margin: 16px auto;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px; /* Change to 50% if circular */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* Chat container */
+.container {
+  background: linear-gradient(135deg, #3A4A57 0%, #2E3A46 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #EAEAEA;
+  margin: 0 auto 23px;
+  height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  max-width: 600px;
+}
+
+/* Messages */
+.message {
+  background: #2E3A46;
+  color: #EAEAEA;
+  max-width: 60%;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  border: 1px solid #1E1E1E;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Incoming messages */
+.left {
+  float: left;
+  clear: both;
+  background: #2E3A46;
+}
+
+/* Outgoing messages */
+.right {
+  float: right;
+  clear: both;
+  background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 100%);
+  color: #1E1E1E;
+  border: none;
+}
+
+/* Form container */
+#send-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 8px;
+}
+
+/* Message input */
+#messageInp {
+  flex: 1;
+  padding: 8px 12px;
+  background: #2E3A46;
+  color: #EAEAEA;
+  border: 2px solid #1E1E1E;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#messageInp:focus {
+  border-color: #4FC3F7;
+  box-shadow: 0 0 6px rgba(79, 195, 247, 0.6);
+}
+
+/* Send button */
+.btn {
+  cursor: pointer;
+  padding: 6px 14px;
+  border: 2px solid #4FC3F7;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 100%);
+  color: #1E1E1E;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #29B6F6 0%, #0288D1 100%);
+  border-color: #0288D1;
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #2E3A46 0%, #1E1E1E 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Scrollbar styling */
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+.container::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}

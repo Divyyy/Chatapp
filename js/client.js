@@ -1,5 +1,5 @@
 
-const socket = io('https://your-app-name.onrender.com'); 
+const socket = io(); 
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
@@ -16,7 +16,7 @@ const append = (message, position) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const message = messageInput.value;
-    if (!message.trim()) return; // avoid sending empty messages
+    if (!message.trim()) return; 
     append(`You: ${message}`, 'right');
     socket.emit('send', message);
     messageInput.value = '';

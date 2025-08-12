@@ -7,7 +7,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD:package.json
      "start": "node index.js"
+=======
+    "start": "node index.js"
+>>>>>>> 6a409599ca9f000ca3080cb5ceb9c5d8f4ca151b:server/package.json
   },
   "dependencies": {
     "express": "^5.1.0",

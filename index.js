@@ -5,37 +5,37 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
+const io = new Server(server);
 
-// Serve client files if needed
+// Serve static files from public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-const io = new Server(server, {
-    cors: {
-        origin: "*", 
-    }
+// Serve index.html at "/"
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const users = {};
 
+// Socket.io events
 io.on('connection', socket => {
-    socket.on('new-user-joined', name => {
-        console.log("new user", name);
-        users[socket.id] = name;
-        socket.broadcast.emit('user-joined', name);
-    });
+  socket.on('new-user-joined', name => {
+    users[socket.id] = name;
+    socket.broadcast.emit('user-joined', name);
+  });
 
-    socket.on('send', message => {
-        socket.broadcast.emit('receive', { message, name: users[socket.id] });
-    });
+  socket.on('send', message => {
+    socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
+  });
 
-    socket.on('disconnect', () => {
-        socket.broadcast.emit('left', users[socket.id]);
-        delete users[socket.id];
-    });
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('left', users[socket.id]);
+    delete users[socket.id];
+  });
 });
 
-// Use PORT from env (important for hosting)
+// Use Render's port or fallback to 5000
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

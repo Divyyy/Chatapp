@@ -1,5 +1,5 @@
 
-const socket = io('https://your-app-name.onrender.com'); 
+const socket = io('https://chatapp001.onrender.com'); 
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
